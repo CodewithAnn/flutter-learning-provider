@@ -10,8 +10,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => SliderProvider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(
+          create: (_) => CounterProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => SliderProvider(),
+        ),
+      ],
       child: MaterialApp(
         home: SliderCounter(),
       ),
