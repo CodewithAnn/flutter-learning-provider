@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_provider/Provider/counter_provider.dart';
+import 'package:flutter_provider/Provider/favourite_provider.dart';
 import 'package:flutter_provider/Provider/slider_counter.dart';
 import 'package:flutter_provider/Screens/FavouriteApp/favouriteApp.dart';
 import 'package:flutter_provider/Screens/counter-App/counterApp.dart';
@@ -15,6 +16,9 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(
           create: (_) => CounterProvider(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => FavouriteAppProvider(),
         ),
         ChangeNotifierProvider(
           create: (_) => SliderProvider(),
