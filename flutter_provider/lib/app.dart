@@ -5,6 +5,7 @@ import 'package:flutter_provider/Provider/slider_counter.dart';
 import 'package:flutter_provider/Screens/FavouriteApp/favouriteApp.dart';
 import 'package:flutter_provider/Screens/counter-App/counterApp.dart';
 import 'package:flutter_provider/Screens/slider-counter/slider_counter.dart';
+import 'package:flutter_provider/Screens/themeSwitch.dart';
 import 'package:provider/provider.dart';
 
 class MyApp extends StatelessWidget {
@@ -24,8 +25,8 @@ class MyApp extends StatelessWidget {
           create: (_) => SliderProvider(),
         ),
       ],
-      child: MaterialApp(
-        home: FavouriteApp(),
+      child: const MaterialApp(
+        home: ThemeSwitch(),
       ),
     );
   }
