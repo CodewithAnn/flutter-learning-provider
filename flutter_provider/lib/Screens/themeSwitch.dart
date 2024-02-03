@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_provider/Provider/theme_provider.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:flutter_switch/flutter_switch.dart';
+import 'package:provider/provider.dart';
 
 class ThemeSwitch extends StatefulWidget {
   const ThemeSwitch({super.key});
@@ -10,22 +12,31 @@ class ThemeSwitch extends StatefulWidget {
 }
 
 class _ThemeSwitchState extends State<ThemeSwitch> {
-  bool isDark = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Theme"),
         actions: [
-          FlutterSwitch(
-            value: isDark,
-            onToggle: (value) {},
-            activeIcon: SvgPicture.asset("assets/images/moon.svg"),
-            inactiveIcon: SvgPicture.asset("assets/images/sun.svg"),
-            toggleSize: 30,
-            height: 40,
-            toggleColor: Colors.yellow,
-            inactiveColor: Colors.yellow.shade200,
+          Consumer<ThemeProvider>(
+            builder: (context, themProvider, child) {
+              return FlutterSwitch(
+                value: themProvider.isDark,
+                onToggle: (dark) {
+                  themProvider.getTheme(dark);
+                },
+                activeIcon: SvgPicture.asset("assets/images/moon.svg"),
+                inactiveIcon: SvgPicture.asset(
+                  "assets/images/sun.svg",
+                ),
+                toggleSize: 30,
+                height: 40,
+                toggleColor: Colors.transparent,
+                inactiveColor: Colors.transparent,
+                activeColor: Colors.transparent,
+                duration: Duration(milliseconds: 200),
+              );
+            },
           ),
           const SizedBox(
             width: 10,

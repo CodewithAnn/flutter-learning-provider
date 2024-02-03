@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_provider/Provider/counter_provider.dart';
 import 'package:flutter_provider/Provider/favourite_provider.dart';
 import 'package:flutter_provider/Provider/slider_counter.dart';
+import 'package:flutter_provider/Provider/theme_provider.dart';
 import 'package:flutter_provider/Screens/FavouriteApp/favouriteApp.dart';
 import 'package:flutter_provider/Screens/counter-App/counterApp.dart';
 import 'package:flutter_provider/Screens/slider-counter/slider_counter.dart';
@@ -24,10 +25,20 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => SliderProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => ThemeProvider(darkMode: false),
+        ),
       ],
-      child: const MaterialApp(
-        home: ThemeSwitch(),
-      ),
+      child: Builder(builder: (context) {
+        return Consumer<ThemeProvider>(
+          builder: (context, themeProvider, child) {
+            return MaterialApp(
+              theme: themeProvider.isDarkMode,
+              home: ThemeSwitch(),
+            );
+          },
+        );
+      }),
     );
   }
 }
