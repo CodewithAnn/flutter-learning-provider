@@ -18,4 +18,19 @@ class ApiServices {
     }
     return data;
   }
+
+  Future<dynamic> getUserData() async {
+    final uri = Uri.parse("https://dummyjson.com/users/1");
+    final getResponse = await http.get(uri);
+
+    late dynamic userData;
+
+    if (getResponse.statusCode == 200) {
+      userData = jsonDecode(getResponse.body);
+    } else {
+      throw Exception('failed to get user data, status code: ${getResponse
+      .statusCode}');
+    }
+    return userData;
+  }
 }
