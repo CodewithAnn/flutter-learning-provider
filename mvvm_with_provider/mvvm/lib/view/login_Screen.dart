@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm/utils/routes/routes_name.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -15,7 +16,16 @@ class _LoginScreenState extends State<LoginScreen> {
         title: const Text("Login"),
       ),
       body: Column(
-        children: [],
+        children: [
+          Center(
+            child: InkWell(
+              onTap: () {
+                Navigator.pushNamed(context, RoutesName.dashboard);
+              },
+              child: Text("click"),
+            ),
+          ),
+        ],
       ),
     );
   }
