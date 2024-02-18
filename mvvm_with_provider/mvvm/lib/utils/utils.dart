@@ -32,4 +32,11 @@ class Utils {
           icon: const Icon(Icons.error_outline_sharp),
         )..show(context));
   }
+
+  // method for shifting keyboard focus to the next TextField in a Form
+  static void moveFocus(
+      {required BuildContext context, required FocusNode  currentNode, required FocusNode nextNode}) {
+    currentNode.unfocus();
+    FocusScope.of(context).requestFocus(nextNode);
+  }
 }
