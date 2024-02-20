@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:mvvm/res/components/rounded_button.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/utils/utils.dart';
+import 'package:mvvm/view_model/auth_view_model.dart';
+import 'package:provider/provider.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -20,6 +22,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final authProvider = Provider.of<AuthViewModel>(context);
     final height = MediaQuery.of(context).size.height * 1;
     return Scaffold(
       // backgroundColor: Colors.red,
@@ -95,6 +98,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       "Your password must be at least 6 characters long.",
                       context);
                 } else {
+                  // call login api
+                  Map data = {
+                    'email': _emailController.text.toString(),
+                    'password': _passwordController.text.toString(),
+                  };
+                  authProvider.loginUser(data, context);
                   print("Login SucessFul");
                 }
               })
