@@ -6,9 +6,13 @@ class AuthRepo {
   BaseApiServices _apiServices = NetworkApiResponse();
 
   Future<dynamic> login(dynamic data) async {
-    dynamic user =
+   
+        
+    try {
+       dynamic user =
         await _apiServices.getPostApiResponse(AppEndPoint.LoginEndPoint, data);
-    try {} catch (e) {
+        return user;
+    } catch (e) {
       throw e;
     }
   }
