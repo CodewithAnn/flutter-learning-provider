@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mvvm/utils/routes/routes_name.dart';
 import 'package:mvvm/view/Dashboard_Screen.dart';
 import 'package:mvvm/view/login_Screen.dart';
+import 'package:mvvm/view/signUp_Screen.dart';
 
 class Routes {
   static Route<dynamic> genrateRoute(RouteSettings settings) {
@@ -12,6 +13,8 @@ class Routes {
         );
       case RoutesName.login:
         return MaterialPageRoute(builder: (_) => const LoginScreen());
+      case RoutesName.signUp:
+        return MaterialPageRoute(builder: (_) => const SignUpScreen());
       default:
         return MaterialPageRoute(
           builder: (context) => const Scaffold(

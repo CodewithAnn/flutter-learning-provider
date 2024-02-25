@@ -16,4 +16,16 @@ class AuthRepo {
       throw e;
     }
   }
+  Future<dynamic> signUp(dynamic data) async {
+   
+        
+    try {
+       dynamic user =
+        await _apiServices.getPostApiResponse(AppEndPoint.registerEndPoint, data);
+        return user;
+    } catch (e) {
+      print("Error in Sign Up : $e");
+      throw e;
+    }
+  }
 }
